@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import cookies from "js-cookie";
+import CourseCard from "../../Components/CourseCard";
 
 const AllCourses = () => {
+  const [coursesData, setCoursesData] = useState([]);
   useEffect(() => {
     const fetchCourses = async () => {
       const url = "http://localhost:3000/admin/course/bulk";
@@ -16,12 +18,20 @@ const AllCourses = () => {
       const response = await fetch(url, options);
       const data = await response.json();
       console.log(data);
+      setCoursesData(data.courses);
     };
 
     fetchCourses();
   }, []);
 
-  return <div>admin courses</div>;
+  return (
+    <div>
+      admin courses
+      {coursesData.map((i) => (
+        <CourseCard key={i._id} courseItem={i} />
+      ))}
+    </div>
+  );
 };
 
 export default AllCourses;
