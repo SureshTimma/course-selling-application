@@ -7,6 +7,7 @@ import AdminSignin from "./Pages/Admin/AdminSignin.jsx";
 import UserSignup from "./Pages/User/UserSignup.jsx";
 import UserSignin from "./Pages/User/UserSignin.jsx";
 import UserPurchases from "./Pages/User/UserPurchases.jsx";
+import CreateCourse from "./Pages/Admin/CreateCourse.jsx";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/user/signup" element={<UserSignup />} />
           <Route path="/user/signin" element={<UserSignin />} />
           <Route path="/user/purchases" element={<UserPurchases />} />
+          <Route path="/admin/create-course" element={<CreateCourse />} />
         </Routes>
       </Router>
     </>
