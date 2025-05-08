@@ -1,8 +1,8 @@
 const jwt = require("jsonwebtoken");
 const { JWT_ADMIN_SECRET } = require("../config");
 
-const  auth = (req, res, next)=>{
-    const token = req.headers.token; 
+const  adminAuth = (req, res, next)=>{
+    const token = req.headers.authorization?.split(" ")[1];
     // console.log(token);
     if (!token) {
         return res.status(401).json({ message: "Token not found" });
@@ -18,5 +18,5 @@ const  auth = (req, res, next)=>{
 }
 
 module.exports = {
-    auth
+    adminAuth
 }

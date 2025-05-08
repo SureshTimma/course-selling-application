@@ -7,7 +7,7 @@ const {z} = require("zod");
 const jwt = require("jsonwebtoken");
 const {JWT_ADMIN_SECRET} = require("../config");
 const { adminModel, purchaseModel, courseModel } = require("../db");
-const {auth} = require("../middleware/adminMw");
+const {adminAuth} = require("../middleware/adminMw");
 
 adminRouter.use(express.json());
 adminRouter.use(cookieParser());
@@ -87,7 +87,7 @@ adminRouter.post("/signin", async function(req, res) {
         res.cookie("adminJWT", token, {
             sameSite: "Lax",
             secure: false, 
-            httpOnly: true, 
+            httpOnly: false, 
             maxAge: 24 * 60 * 60 * 1000, 
             path: "/"
         });
@@ -104,7 +104,7 @@ adminRouter.post("/signin", async function(req, res) {
 });
 
 
-adminRouter.post("/course",auth, async(req,res)=>{
+adminRouter.post("/course",adminAuth, async(req,res)=>{
     const adminId = req.userId;
     const {title,desc,price,imageURL, creatorId} = req.body;
     const course = await courseModel.create({
@@ -121,7 +121,7 @@ adminRouter.post("/course",auth, async(req,res)=>{
     )
 })
 
-adminRouter.put("/course",auth, async (req,res)=>{
+adminRouter.put("/course",adminAuth, async (req,res)=>{
     const adminId = req.userId;
     const courseId = req.headers['courseid'];
     const {title,desc,price,imageURL} = req.body;
@@ -142,7 +142,7 @@ adminRouter.put("/course",auth, async (req,res)=>{
     })
 })
 
-adminRouter.get("/course/bulk",auth, async (req,res)=>{
+adminRouter.get("/course/bulk",adminAuth, async (req,res)=>{
     const adminId = req.userId;
     const courses = await courseModel.find({
             creatorId:adminId

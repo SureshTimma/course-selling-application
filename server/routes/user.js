@@ -7,7 +7,7 @@ const {z} = require("zod");
 const jwt = require("jsonwebtoken");
 const {JWT_USER_SECRET} = require("../config");
 const { userModel, purchaseModel } = require("../db");
-const {auth} = require("../middleware/userMw");
+const {userAuth} = require("../middleware/userMw");
 
 userRouter.use(express.json());
 userRouter.use(cookieParser());
@@ -85,7 +85,7 @@ userRouter.post("/signin", async function(req, res) {
         res.cookie("userJWT", token, {
             sameSite: "Lax",
             secure: false, 
-            httpOnly: true, 
+            httpOnly: false, 
             maxAge: 24 * 60 * 60 * 1000, 
             path: "/"
         });
@@ -101,7 +101,7 @@ userRouter.post("/signin", async function(req, res) {
     }
 });
 
-userRouter.get("/purchases",auth, async (req,res)=>{
+userRouter.get("/purchases",userAuth, async (req,res)=>{
     const userId = req.userId;
     const purchases = await purchaseModel.find({
         userId

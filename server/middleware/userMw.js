@@ -1,15 +1,16 @@
 const jwt = require("jsonwebtoken");
 const { JWT_USER_SECRET } = require("../config");
 
-const  auth = (req, res, next)=>{
-    const token = req.headers.token; 
+const  userAuth = async (req, res, next)=>{
+    const token = req.headers.authorization?.split(" ")[1]; 
     // console.log(token);
     if (!token) {
         return res.status(401).json({ message: "Token not found" });
     }
 
     try {
-        const decoded = jwt.verify(token, JWT_USER_SECRET); 
+        const decoded = await jwt.verify(token, JWT_USER_SECRET); 
+        // console.log(decoded.id);
         req.userId = decoded.id; 
         next(); 
     } catch (err) {
@@ -18,5 +19,5 @@ const  auth = (req, res, next)=>{
 }
 
 module.exports = {
-    auth
+    userAuth
 }

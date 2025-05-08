@@ -1,5 +1,5 @@
 const express = require("express");
-const { auth } = require("../middleware/userMw");
+const { userAuth } = require("../middleware/userMw");
 
 const {Router} = express;
 const courseRouter = Router();
@@ -9,7 +9,7 @@ const courseRouter = Router();
 
 
 
-courseRouter.post("/purchase",auth, async (req,res)=>{
+courseRouter.post("/purchase",userAuth, async (req,res)=>{
     const userId = req.userId;
     const courseId = req.body.courseId;
 
