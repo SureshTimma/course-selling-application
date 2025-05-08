@@ -1,5 +1,6 @@
 const express = require("express");
 const adminRouter = express.Router();
+const cookieParser = require('cookie-parser');
 
 const bcrypt = require("bcrypt");
 const {z} = require("zod");
@@ -9,7 +10,7 @@ const { adminModel, purchaseModel, courseModel } = require("../db");
 const {auth} = require("../middleware/adminMw");
 
 adminRouter.use(express.json());
-
+adminRouter.use(cookieParser());
 
 
 adminRouter.get("/",(req,res)=>{
@@ -83,7 +84,16 @@ adminRouter.post("/signin", async function(req, res) {
             id: user._id.toString()
         },JWT_ADMIN_SECRET)
 
+        res.cookie("adminJWT", token, {
+            sameSite: "Lax",
+            secure: false, 
+            httpOnly: true, 
+            maxAge: 24 * 60 * 60 * 1000, 
+            path: "/"
+        });
+
         res.json({
+            msg: "cookie set",
             token
         })
     } else {

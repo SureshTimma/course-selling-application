@@ -1,5 +1,6 @@
 const express = require("express");
 const userRouter = express.Router();
+const cookieParser = require('cookie-parser');
 
 const bcrypt = require("bcrypt");
 const {z} = require("zod");
@@ -9,8 +10,7 @@ const { userModel, purchaseModel } = require("../db");
 const {auth} = require("../middleware/userMw");
 
 userRouter.use(express.json());
-
-
+userRouter.use(cookieParser());
 
 userRouter.get("/",(req,res)=>{
     res.send("users route working")
@@ -82,7 +82,16 @@ userRouter.post("/signin", async function(req, res) {
             id: user._id.toString()
         },JWT_USER_SECRET)
 
+        res.cookie("userJWT", token, {
+            sameSite: "Lax",
+            secure: false, 
+            httpOnly: true, 
+            maxAge: 24 * 60 * 60 * 1000, 
+            path: "/"
+        });
+
         res.json({
+            msg: "cookie set",
             token
         })
     } else {

@@ -1,19 +1,18 @@
 import React, { use, useState } from "react";
 
-const UserSignup = () => {
+const UserSignin = () => {
   const [formData, setFormData] = useState({
-    firstname: "",
-    lastname: "",
     email: "",
     password: "",
   });
 
-  const url = "http://localhost:3000/user/signup";
+  const url = "http://localhost:3000/user/signin";
   const options = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
     body: JSON.stringify(formData),
   };
 
@@ -27,7 +26,7 @@ const UserSignup = () => {
 
   const onFormSubmission = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData);
     const fetchData = await fetch(url, options);
     const response = await fetchData.json();
     console.log(response);
@@ -36,17 +35,7 @@ const UserSignup = () => {
   return (
     <div>
       <form onSubmit={onFormSubmission}>
-        <h1>User Signup</h1>
-
-        <label htmlFor="firstname">First Name: </label>
-        <br />
-        <input type="text" id="firstname" name="firstname" value={formData.firstname} onChange={handleChange} />
-        <br />
-
-        <label htmlFor="lastname">Last Name: </label>
-        <br />
-        <input type="text" id="lastname" name="lastname" value={formData.lastname} onChange={handleChange} />
-        <br />
+        <h1>User Signin</h1>
 
         <label htmlFor="email">Email: </label>
         <br />
@@ -64,4 +53,4 @@ const UserSignup = () => {
   );
 };
 
-export default UserSignup;
+export default UserSignin;
