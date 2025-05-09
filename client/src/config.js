@@ -1,6 +1,6 @@
 const config = {
   apiUrl: import.meta.env.PROD 
-    ? 'https://course-selling-application-j9jn.onrender.com'
+    ? 'https://csa-server.vercel.app'
     : 'http://localhost:3000'
 };
 
