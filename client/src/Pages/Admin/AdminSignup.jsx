@@ -1,6 +1,10 @@
 import React, { use, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import AdminSignin from "./AdminSignin";
 
 const AdminSignup = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -27,10 +31,11 @@ const AdminSignup = () => {
 
   const onFormSubmission = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData);
     const fetchData = await fetch(url, options);
     const response = await fetchData.json();
     console.log(response);
+    navigate("/admin/signin");
   };
 
   return (

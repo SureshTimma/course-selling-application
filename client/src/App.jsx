@@ -9,6 +9,8 @@ import UserSignin from "./Pages/User/UserSignin.jsx";
 import UserPurchases from "./Pages/User/UserPurchases.jsx";
 import CreateCourse from "./Pages/Admin/CreateCourse.jsx";
 import AllCourses from "./Pages/Admin/AllCourses.jsx";
+import UpdateCourse from "./Pages/Admin/UpdateCourse.jsx";
+import PageNotFound from "./Pages/PageNotFound.jsx";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path="/user/purchases" element={<UserPurchases />} />
           <Route path="/admin/create-course" element={<CreateCourse />} />
           <Route path="/admin/all-courses" element={<AllCourses />} />
+          <Route path="/admin/update-course" element={<UpdateCourse />} />
+          <Route path="/*" element={<PageNotFound />} />
         </Routes>
       </Router>
     </>

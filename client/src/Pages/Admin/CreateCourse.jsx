@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const CreateCourse = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
     desc: "",
@@ -35,6 +37,7 @@ const CreateCourse = () => {
     const response = await fetch(url, options);
     const data = await response.json();
     // console.log(data);
+    navigate("/admin/all-courses");
   };
 
   return (
