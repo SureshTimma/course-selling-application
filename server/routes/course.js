@@ -13,7 +13,7 @@ courseRouter.post("/purchase",userAuth, async (req,res)=>{
     const userId = req.userId;
     const courseId = req.headers["x-courseId"];
 
-    console.log(userId,courseId);
+    // console.log(userId,courseId);
 
         // check if user has paid already for a course or not
     await purchaseModel.create({

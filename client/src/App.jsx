@@ -10,6 +10,7 @@ import CreateCourse from "./Pages/Admin/CreateCourse.jsx";
 import AdminCourses from "./Pages/Admin/AllCourses.jsx";
 import UpdateCourse from "./Pages/Admin/UpdateCourse.jsx";
 import UserCourses from "./Pages/User/AllCourses.jsx";
+import UserPurchasedCourses from "./Pages/User/UserPurchasedCourses.jsx";
 import PageNotFound from "./Pages/PageNotFound.jsx";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/admin/all-courses" element={<AdminCourses />} />
           <Route path="/admin/update-course" element={<UpdateCourse />} />
           <Route path="/user/all-courses/" element={<UserCourses />} />
+          <Route path="/user/purchases" element={<UserPurchasedCourses />} />
           <Route path="/*" element={<PageNotFound />} />
         </Routes>
       </Router>
