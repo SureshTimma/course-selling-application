@@ -14,7 +14,7 @@ const AllCourses = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${cookies.get("adminJWT")}`,
         },
-        // Credentials: "include",
+        Credentials: "include",
       };
       const response = await fetch(url, options);
       const data = await response.json();
