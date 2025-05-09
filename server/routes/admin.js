@@ -85,7 +85,7 @@ adminRouter.post("/signin", async function(req, res) {
         },JWT_ADMIN_SECRET)
 
         res.cookie("adminJWT", token, {
-            sameSite: "none",
+            sameSite: "None",
             secure: true, 
             httpOnly: false, 
             maxAge: 24 * 60 * 60 * 1000, 
