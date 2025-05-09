@@ -28,7 +28,7 @@ const CreateCourse = () => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${cookies.get("adminJWT")}`,
     },
-    credentials: "include",
+    // credentials: "include",
     body: JSON.stringify(formData),
   };
 

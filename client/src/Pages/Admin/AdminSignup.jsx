@@ -1,6 +1,6 @@
 import React, { use, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AdminSignin from "./AdminSignin";
+import config from "../../config";
 
 const AdminSignup = () => {
   const navigate = useNavigate();
