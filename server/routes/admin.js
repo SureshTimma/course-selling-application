@@ -88,7 +88,6 @@ adminRouter.post("/signin", async function(req, res) {
             sameSite: "none",
             secure: true, 
             httpOnly: false, 
-            maxAge: 24 * 60 * 60 * 1000, 
             path: "/",
             domain: '.vercel.app'
         });
