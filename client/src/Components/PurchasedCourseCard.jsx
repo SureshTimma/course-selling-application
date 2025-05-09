@@ -1,13 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import cookies from "js-cookie";
+import config from "../config";
 
 const PurchasedCourseCard = ({ courseItem }) => {
   const navigate = useNavigate();
   const { title, desc, price, imageURL, _id, creatorId } = courseItem;
   // console.log(courseItem);
 
-  const url = "http://localhost:3000/course/purchase";
+  const url = `${config.apiUrl}/course/purchase`;
   const options = {
     method: "POST",
     headers: {

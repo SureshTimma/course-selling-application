@@ -1,5 +1,6 @@
 import React, { use, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import config from "../../config";
 
 const UserSignup = () => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const UserSignup = () => {
     password: "",
   });
 
-  const url = "http://localhost:3000/user/signup";
+  const url = `${config.apiUrl}/user/signup`;
   const options = {
     method: "POST",
     headers: {

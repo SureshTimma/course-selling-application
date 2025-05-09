@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import cookies from "js-cookie";
+import config from "../../config";
 
 const UpdateCourse = () => {
   const location = useLocation();
@@ -23,7 +24,7 @@ const UpdateCourse = () => {
 
   // console.log(courseData._id);
 
-  const url = "http://localhost:3000/admin/course";
+  const url = `${config.apiUrl}/admin/course`;
   //   console.log(cookies.get("adminJWT"));
   const options = {
     method: "PUT",

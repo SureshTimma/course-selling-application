@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import cookies from "js-cookie";
 import PurchasedCourseCard from "../../Components/PurchasedCourseCard";
+import config from "../../config";
 
 const UserPurchasedCourses = () => {
   const [coursesData, setCoursesData] = useState([]);
   useEffect(() => {
     const fetchCourses = async () => {
-      const url = "http://localhost:3000/admin/course/bulk";
+      const url = `${config.apiUrl}/admin/course/bulk`;
       const options = {
         method: "GET",
         headers: {
