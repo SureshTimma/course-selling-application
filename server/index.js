@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 
 const dotenv = require("dotenv")
 dotenv.config()
+app.set('trust proxy', 1);
 
 app.use(express.json());
 app.use(cors({
