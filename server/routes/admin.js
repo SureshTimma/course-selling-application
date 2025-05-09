@@ -86,7 +86,7 @@ adminRouter.post("/signin", async function(req, res) {
 
         res.cookie("adminJWT", token, {
             sameSite: "none",
-            secure: false, 
+            secure: true, 
             httpOnly: false, 
             maxAge: 24 * 60 * 60 * 1000, 
             path: "/"
