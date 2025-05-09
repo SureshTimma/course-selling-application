@@ -32,7 +32,7 @@ const AdminSignin = () => {
     const fetchData = await fetch(url, options);
     const response = await fetchData.json();
     console.log(response);
-    navigate("/admin/all-courses");
+    navigate("/admin/create-course");
   };
 
   return (

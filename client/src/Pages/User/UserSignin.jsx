@@ -32,6 +32,7 @@ const UserSignin = () => {
     const fetchData = await fetch(url, options);
     const response = await fetchData.json();
     console.log(response);
+    navigate("/user/purchases");
   };
 
   return (
