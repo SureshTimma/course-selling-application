@@ -57,7 +57,7 @@ adminRouter.post("/signup", async function(req, res) {
             timestamp:timeString
         });
 
-        res.json({
+        res.status(200).json({
             message: "You are signed up",
         });
     } catch (e) {
@@ -123,8 +123,10 @@ adminRouter.post("/course",adminAuth, async(req,res)=>{
 
 adminRouter.put("/course",adminAuth, async (req,res)=>{
     const adminId = req.userId;
-    const courseId = req.headers['courseid'];
+    const courseId = req.headers['x-courseid'];
     const {title,desc,price,imageURL} = req.body;
+
+    // console.log(courseId, adminId)
 
     const updatedCourse = await courseModel.updateOne({
         _id:courseId,
