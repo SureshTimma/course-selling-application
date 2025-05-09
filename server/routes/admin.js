@@ -85,11 +85,12 @@ adminRouter.post("/signin", async function(req, res) {
         },JWT_ADMIN_SECRET)
 
         res.cookie("adminJWT", token, {
-            sameSite: "None",
+            sameSite: "none",
             secure: true, 
             httpOnly: false, 
             maxAge: 24 * 60 * 60 * 1000, 
-            path: "/"
+            path: "/",
+            domain: '.vercel.app'
         });
 
         res.json({
