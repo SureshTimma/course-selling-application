@@ -34,31 +34,73 @@ const UserSignup = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={onFormSubmission}>
-        <h1>User Signup</h1>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-100 to-yellow-200 px-4 py-8">
+      <form onSubmit={onFormSubmission} className="bg-white w-full max-w-md p-8 rounded-2xl shadow-xl">
+        <h1 className="text-4xl font-bold text-center text-orange-600 mb-8">User Signup</h1>
 
-        <label htmlFor="firstname">First Name: </label>
-        <br />
-        <input type="text" id="firstname" name="firstname" value={formData.firstname} onChange={handleChange} />
-        <br />
+        <div className="mb-5">
+          <label htmlFor="firstname" className="block mb-1 text-sm font-semibold text-gray-700">
+            First Name
+          </label>
+          <input
+            type="text"
+            id="firstname"
+            name="firstname"
+            value={formData.firstname}
+            onChange={handleChange}
+            placeholder="Enter your first name"
+            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+          />
+        </div>
 
-        <label htmlFor="lastname">Last Name: </label>
-        <br />
-        <input type="text" id="lastname" name="lastname" value={formData.lastname} onChange={handleChange} />
-        <br />
+        <div className="mb-5">
+          <label htmlFor="lastname" className="block mb-1 text-sm font-semibold text-gray-700">
+            Last Name
+          </label>
+          <input
+            type="text"
+            id="lastname"
+            name="lastname"
+            value={formData.lastname}
+            onChange={handleChange}
+            placeholder="Enter your last name"
+            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+          />
+        </div>
 
-        <label htmlFor="email">Email: </label>
-        <br />
-        <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
-        <br />
+        <div className="mb-5">
+          <label htmlFor="email" className="block mb-1 text-sm font-semibold text-gray-700">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Enter your email"
+            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+          />
+        </div>
 
-        <label htmlFor="password">Password: </label>
-        <br />
-        <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} />
-        <br />
+        <div className="mb-6">
+          <label htmlFor="password" className="block mb-1 text-sm font-semibold text-gray-700">
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="Enter your password"
+            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+          />
+        </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit" className="w-full bg-orange-600 text-white font-bold py-2 rounded-lg hover:bg-orange-700 transition-all duration-300">
+          Submit
+        </button>
       </form>
     </div>
   );
