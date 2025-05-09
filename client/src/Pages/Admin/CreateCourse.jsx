@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import config from "../../config";
 
 const CreateCourse = () => {
   const navigate = useNavigate();
