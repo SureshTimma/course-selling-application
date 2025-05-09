@@ -12,7 +12,7 @@ const AdminSignup = () => {
     password: "",
   });
 
-  const url = "http://localhost:3000/admin/signup";
+  const url = `${config.apiUrl}/admin/signup`;
   const options = {
     method: "POST",
     headers: {
