@@ -73,6 +73,13 @@ const AdminSignin = () => {
         <button type="submit" className="w-full bg-orange-600 text-white font-bold py-2 rounded-lg hover:bg-orange-700 transition-all duration-300">
           Submit
         </button>
+
+        <p className="mt-6 text-center text-sm text-gray-700">
+          Not registered yet?
+          <span onClick={() => navigate("/admin/signup")} className="text-orange-600 font-semibold hover:underline ml-1 cursor-pointer">
+            Sign Up
+          </span>
+        </p>
       </form>
     </div>
   );
