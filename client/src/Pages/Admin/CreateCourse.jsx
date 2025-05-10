@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import config from "../../config";
 
@@ -21,14 +20,13 @@ const CreateCourse = () => {
   };
 
   const url = `${config.apiUrl}/admin/course`;
-  //   console.log(cookies.get("adminJWT"));
+  const token = localStorage.getItem('adminJWT');
   const options = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${cookies.get("adminJWT")}`,
+      Authorization: `Bearer ${token}`,
     },
-    credentials: "include",
     body: JSON.stringify(formData),
   };
 

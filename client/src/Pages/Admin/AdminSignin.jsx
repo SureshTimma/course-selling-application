@@ -30,11 +30,14 @@ const AdminSignin = () => {
 
   const onFormSubmission = async (e) => {
     e.preventDefault();
-    // console.log(formData);
     const fetchData = await fetch(url, options);
     const response = await fetchData.json();
-    console.log(response);
-    navigate("/admin/create-course");
+    if (response.token) {
+      localStorage.setItem('adminJWT', response.token);
+      navigate("/admin/create-course");
+    } else {
+      console.error('Authentication failed');
+    }
   };
 
   return (
