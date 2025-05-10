@@ -85,6 +85,15 @@ const AdminSignin = () => {
             Sign Up
           </span>
         </p>
+
+        <p className="mt-4 text-center text-sm text-gray-700">
+      <span
+        onClick={() => navigate("/")}
+        className="text-orange-600 font-semibold hover:underline cursor-pointer"
+      >
+        ← Return to Home
+      </span>
+    </p>
       </form>
     </div>
   );
