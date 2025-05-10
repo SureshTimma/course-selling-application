@@ -32,7 +32,7 @@ const UserSignin = () => {
     const response = await fetchData.json();
     if (response.token) {
       localStorage.setItem('userJWT', response.token);
-      navigate("/user/purchases");
+      navigate("/user/all-courses");
     } else {
       console.error('Authentication failed');
     }

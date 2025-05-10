@@ -10,7 +10,7 @@ const AdminSignin = () => {
   });
 
   const url = `${config.apiUrl}/admin/signin`;
-  console.log(url);
+  // console.log(url);
   const options = {
     method: "POST",
     headers: {

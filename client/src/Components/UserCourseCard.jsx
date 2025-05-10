@@ -9,25 +9,33 @@ const UserCourseCard = ({ courseItem }) => {
 
   const url = `${config.apiUrl}/course/purchase`;
   const token = localStorage.getItem('userJWT');
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-      "X-courseId": _id,
-    },
-  };
   const handlePurchase = async () => {
-    console.log("purchase clicked");
-    // navigate("/admin/update-course", {
-    //   state: {
-    //     courseData: courseItem,
-    //   },
-    // });
+    try {
+      console.log('Purchasing Course Details:', { courseId: _id, title });
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ 
+          courseId: _id,
+          courseTitle: title
+        }),
+      });
+      const data = await response.json();
 
-    const response = await fetch(url, options);
-    const data = await response.json();
-    console.log(data);
+      if (response.ok) {
+        // Purchase successful
+        alert(data.message || "Course purchased successfully!");
+      } else {
+        // Purchase failed
+        alert(data.message || "Failed to purchase the course.");
+      }
+    } catch (error) {
+      console.error("Purchase error:", error);
+      alert("An error occurred while purchasing the course.");
+    }
   };
   return (
     <div className="max-w-xs w-full bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out">

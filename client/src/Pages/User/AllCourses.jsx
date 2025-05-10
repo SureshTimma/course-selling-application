@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import UserNavbar from '../../Components/UserNavbar';
 import UserCourseCard from "../../Components/UserCourseCard";
 import config from "../../config";
 
@@ -25,15 +26,18 @@ const AllCourses = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-100 px-6 py-10">
-      <h1 className="text-4xl font-bold text-center text-orange-700 mb-10">All Courses</h1>
+    <>
+      <UserNavbar />
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-100 px-6 py-10">
+        <h1 className="text-4xl font-bold text-center text-orange-700 mb-10">All Courses</h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-        {coursesData.map((i) => (
-          <UserCourseCard key={i._id} courseItem={i} />
-        ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {coursesData.map((i) => (
+            <UserCourseCard key={i._id} courseItem={i} />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
