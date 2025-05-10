@@ -82,16 +82,8 @@ userRouter.post("/signin", async function(req, res) {
             id: user._id.toString()
         },JWT_USER_SECRET)
 
-        res.cookie("userJWT", token, {
-            sameSite: "Lax",
-            secure: false, 
-            httpOnly: false, 
-            maxAge: 24 * 60 * 60 * 1000, 
-            path: "/"
-        });
-
         res.json({
-            msg: "cookie set",
+            msg: "User authenticated",
             token
         })
     } else {

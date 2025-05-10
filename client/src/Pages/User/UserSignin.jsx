@@ -15,7 +15,6 @@ const UserSignin = () => {
     headers: {
       "Content-Type": "application/json",
     },
-    credentials: "include",
     body: JSON.stringify(formData),
   };
 
@@ -29,11 +28,14 @@ const UserSignin = () => {
 
   const onFormSubmission = async (e) => {
     e.preventDefault();
-    // console.log(formData);
     const fetchData = await fetch(url, options);
     const response = await fetchData.json();
-    console.log(response);
-    navigate("/user/purchases");
+    if (response.token) {
+      localStorage.setItem('userJWT', response.token);
+      navigate("/user/purchases");
+    } else {
+      console.error('Authentication failed');
+    }
   };
 
   return (
