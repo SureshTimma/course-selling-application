@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import cookies from "js-cookie";
 import CourseCard from "../../Components/CourseCard";
 import config from "../../config";
 
@@ -8,13 +7,13 @@ const AllCourses = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       const url = `${config.apiUrl}/admin/course/bulk`;
+      const token = localStorage.getItem('adminJWT');
       const options = {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${cookies.get("adminJWT")}`,
+          Authorization: `Bearer ${token}`,
         },
-        Credentials: "include",
       };
       const response = await fetch(url, options);
       const data = await response.json();

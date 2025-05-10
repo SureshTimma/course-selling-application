@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import cookies from "js-cookie";
 import config from "../../config";
 
 const UpdateCourse = () => {
@@ -25,15 +24,14 @@ const UpdateCourse = () => {
   // console.log(courseData._id);
 
   const url = `${config.apiUrl}/admin/course`;
-  //   console.log(cookies.get("adminJWT"));
+  const token = localStorage.getItem('adminJWT');
   const options = {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${cookies.get("adminJWT")}`,
+      Authorization: `Bearer ${token}`,
       "X-CourseId": courseData._id,
     },
-    credentials: "include",
     body: JSON.stringify(formData),
   };
 
