@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import cookies from "js-cookie";
 import config from "../config";
 
 const PurchasedCourseCard = ({ courseItem }) => {
@@ -9,11 +8,12 @@ const PurchasedCourseCard = ({ courseItem }) => {
   // console.log(courseItem);
 
   const url = `${config.apiUrl}/course/purchase`;
+  const token = localStorage.getItem('userJWT');
   const options = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${cookies.get("userJWT")}`,
+      Authorization: `Bearer ${token}`,
       "X-courseId": _id,
     },
   };
